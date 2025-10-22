@@ -7,7 +7,13 @@ import (
 
 func GetUsers(c *fiber.Ctx) error {
 	users := services.GetAllUsers()
-	return c.JSON(users)
+	// 返回带有状态信息的JSON响应
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status":  "success",
+		"message": "获取用户列表成功",
+		"data":    users,
+		"count":   len(users),
+	})
 }
 
 func CreateUser(c *fiber.Ctx) error {

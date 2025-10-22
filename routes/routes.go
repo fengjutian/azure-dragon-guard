@@ -7,7 +7,6 @@ import (
 
 func Setup(app *fiber.App) {
 	api := app.Group("/api")
-
 	api.Get("/users", handlers.GetUsers)
 	api.Post("/users", handlers.CreateUser)
 }
